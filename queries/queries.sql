@@ -3,26 +3,26 @@ SELECT nombre, precio FROM producto;
 SELECT * FROM producto;
 SELECT nombre, precio"precio_eur", precio"precio_usd" FROM producto;
 SELECT nombre "nom del producte", precio"euros", ROUND(precio*1.1, 2)"dòlars" FROM producto;
-SELECT upper(nombre), precio FROM producto;
-SELECT lower(nombre), precio FROM producto;
+SELECT upper(nombre) as nombre, precio FROM producto;
+SELECT lower(nombre) as nombre, precio FROM producto;
 SELECT nombre, upper(substring(nombre, 1, 2)) "iniciales" FROM fabricante; 
-SELECT nombre, ROUND(precio) FROM producto;
-SELECT nombre, round(precio) "precio truncado" FROM producto;
+SELECT nombre, ROUND(precio) as precio FROM producto;
+SELECT nombre, truncate(precio, 0) as "precio truncado" FROM producto;
 SELECT codigo_fabricante FROM producto;
 SELECT DISTINCT codigo_fabricante FROM producto;
-SELECT nombre FROM producto ORDER BY nombre ASC;
-SELECT nombre FROM producto ORDER BY nombre DESC;
+SELECT nombre FROM fabricante ORDER BY nombre ASC;
+SELECT nombre FROM fabricante ORDER BY nombre DESC;
 SELECT nombre, precio FROM producto ORDER BY nombre ASC, precio DESC;
 SELECT * FROM fabricante LIMIT 5;
 SELECT * FROM fabricante LIMIT 2 OFFSET 3;
 SELECT nombre, precio FROM producto ORDER BY precio ASC LIMIT 1;
 SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
 SELECT nombre FROM producto WHERE codigo_fabricante = 2;
-SELECT producto.nombre, producto.precio, fabricante.nombre AS "nombre fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo;
-SELECT producto.nombre, producto.precio, fabricante.nombre AS "nombre fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo ORDER BY producto.nombre ASC;
+SELECT producto.nombre, producto.precio, fabricante.nombre AS "nombre del fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo;
+SELECT producto.nombre, producto.precio, fabricante.nombre AS "nombre del fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo ORDER BY fabricante.nombre ASC;
 SELECT producto.codigo, producto.nombre, fabricante.codigo AS "codigo fabricante" , fabricante.nombre AS "nombre fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo;	
-SELECT producto.nombre, producto.precio, fabricante.nombre FROM producto INNER JOIN fabricante ON producto.codigo_fabricante ORDER BY precio ASC LIMIT 1;
-SELECT producto.nombre, producto.precio, fabricante.nombre FROM producto INNER JOIN fabricante ON producto.codigo_fabricante ORDER BY precio DESC LIMIT 1;
+SELECT producto.nombre, producto.precio, fabricante.nombre as fabricant FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo ORDER BY precio ASC LIMIT 1;
+SELECT producto.nombre, producto.precio, fabricante.nombre as fabricante FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo ORDER BY precio DESC LIMIT 1;
 SELECT producto.nombre, producto.precio FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre="Lenovo";
 SELECT producto.nombre, producto.precio FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre="Crucial" AND producto.precio>200;
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre = "Asus" OR fabricante.nombre = "Hewlett-Packard" OR fabricante.nombre = "Seagate";
@@ -30,7 +30,6 @@ SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM 
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE substring(fabricante.nombre, -1, 1)="e";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre LIKE "%w%";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio >= 180 ORDER BY producto.precio DESC, producto.nombre ASC;
-
 -- 33. Retorna un llistat amb el codi i el nom de fabricant (fabricante), solament d'aquells fabricants que tenen productes associats en la base de dades.
 
 
