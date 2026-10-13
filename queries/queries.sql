@@ -30,7 +30,7 @@ SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM 
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE substring(fabricante.nombre, -1, 1)="e";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre LIKE "%w%";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio >= 180 ORDER BY producto.precio DESC, producto.nombre ASC;
-SELECT DISTINCT fabricante.codigo, fabricante.nombre as fabricante FROM fabricante INNER JOIN producto ON producto.codigo_fabricante = fabricante.codigo WHERE producto.codigo_fabricante IS NOT NULL;
+SELECT DISTINCT fabricante.codigo, fabricante.nombre FROM fabricante INNER JOIN producto ON producto.codigo_fabricante = fabricante.codigo WHERE producto.codigo_fabricante IS NOT NULL;
 SELECT fabricante.nombre as fabricante, producto.nombre as producto FROM fabricante LEFT JOIN producto ON fabricante.codigo = producto.codigo_fabricante;
 -- 35. Retorna un llistat on només apareguin els noms dels fabricants (fabricante) que no tenen cap producte associat.
 
