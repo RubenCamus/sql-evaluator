@@ -30,12 +30,8 @@ SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM 
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE substring(fabricante.nombre, -1, 1)="e";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre LIKE "%w%";
 SELECT producto.nombre, producto.precio, fabricante.nombre AS "fabricante" FROM producto INNER JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio >= 180 ORDER BY producto.precio DESC, producto.nombre ASC;
--- 33. Retorna un llistat amb el codi i el nom de fabricant (fabricante), solament d'aquells fabricants que tenen productes associats en la base de dades.
-
-
--- 34. Retorna un llistat de tots els fabricants que existeixen en la base de dades, juntament amb els productes que té cadascun d'ells. Inclou també els fabricants que no tenen cap producte. Mostra el nom del fabricant (fabricante) i el nom del producte (producto).
-
-
+SELECT DISTINCT fabricante.codigo, fabricante.nombre as fabricante FROM fabricante INNER JOIN producto ON producto.codigo_fabricante = fabricante.codigo WHERE producto.codigo_fabricante IS NOT NULL;
+SELECT fabricante.nombre as fabricante, producto.nombre as producto FROM fabricante LEFT JOIN producto ON fabricante.codigo = producto.codigo_fabricante;
 -- 35. Retorna un llistat on només apareguin els noms dels fabricants (fabricante) que no tenen cap producte associat.
 
 
